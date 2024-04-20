@@ -1,33 +1,63 @@
-import { Grid } from '@mui/material'
-import React from 'react'
-import Header from '../Header/Header'
+import React from "react";
+import { AppBar, Toolbar, Typography, IconButton, Avatar } from "@mui/material";
+// import { PowerSettingsNew } from "@mui/icons-material";
+import MenuIcon from "@mui/icons-material/Menu";
 
-function HomePage() {
+function Header() {
   return (
-    <>
-    <Header />
-    <Grid container xs={12} className='px-5 lg:px-36 justify-between'>
-        <Grid item xs={0} lg={2.5} className='hidden lg:block w-full relative'>
-            <p className='text-center'>left part</p>
-        </Grid>
-        <Grid item xs={12} lg={6} className='hidden lg:block w-full relative'>
+    // <div>Header</div>
+    <AppBar
+      position="static"
+      color="transparent"
+      className="shadow-none"
+      style={{ backgroundColor: "grey" }}
+    >
+      <Toolbar
+        className="flex justify-between items-center px-4"
+        style={{ paddingRight: "100px" }}
+      >
+        <Typography variant="h5">Prognostic</Typography>
 
-              <p className='text-center'>middle part</p>
+        <Typography
+          className="whitespace-nowrap mr-4"
+          style={{ paddingLeft: 200, paddingRight: 890 }}
+        >
+          {new Date()
+            .toLocaleString("en-US", {
+              weekday: "long",
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true,
+            })
+            .replace("at", " ")}
+        </Typography>
 
-      
-        </Grid>
-        <Grid item xs={0} lg={3} className='hidden lg:block w-full relative'>
+        <Typography
+          variant="body1"
+          className="mr-2"
+          style={{ paddingRight: 20 }}
+        >
+          Hi Rebecca
+        </Typography>
 
-            <p className='text-center'>right part</p>
+        <Avatar />
+        {/* The IconButton for logout/sign out can be added here */}
+        {/* </div> */}
 
-            
-        </Grid>
-    </Grid>
-    </>
-    
-    
-
-  )
+        {/* <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            className="mr-2"
+          >
+            <MenuIcon />
+          </IconButton> */}
+      </Toolbar>
+    </AppBar>
+  );
 }
 
-export default HomePage
+export default Header;
