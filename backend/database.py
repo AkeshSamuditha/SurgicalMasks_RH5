@@ -1,14 +1,15 @@
 from pymongo.mongo_client import MongoClient
 
-uri = "mongodb+srv://surgicalmasks:6ey0eKacdG2MdmvB@cluster0.uovckvw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+def connect():
+    uri = "mongodb+srv://surgicalmasks:6ey0eKacdG2MdmvB@cluster0.uovckvw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-client = MongoClient(uri)
-# Send a ping to confirm a successful connection
-try:
-    client.admin.command('ping')
-    print("Pinged your deployment. You successfully connected to MongoDB!")
-except Exception as e:
-    print(e)
+    client = MongoClient(uri)
+    # Send a ping to confirm a successful connection
+    try:
+        client.admin.command('ping')
+        print("Pinged your deployment. You successfully connected to MongoDB!")
+    except Exception as e:
+        print(e)
     
     
 import pandas as pd
@@ -31,4 +32,6 @@ def intializeData():
     collection.insert_many(data_dict)
     print("Data inserted successfully")
     
+    
+connect()
 
