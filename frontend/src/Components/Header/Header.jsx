@@ -44,17 +44,7 @@ function Header() {
         </Typography>
 
         <Avatar />
-        {/* The IconButton for logout/sign out can be added here */}
-        {/* </div> */}
 
-        {/* <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            className="mr-2"
-          >
-            <MenuIcon />
-          </IconButton> */}
       </Toolbar>
     </AppBar>
   );
