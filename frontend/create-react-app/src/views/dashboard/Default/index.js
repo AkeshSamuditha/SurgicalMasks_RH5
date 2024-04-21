@@ -12,6 +12,7 @@ import { Grid } from '@mui/material';
 import TotalGrowthBarChart from './TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
 import SymptomForm from './SymptomForm';
+import TableauEmbed from './TableauEmbed';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
@@ -24,6 +25,7 @@ const Dashboard = () => {
 
   return (
     <Grid container spacing={gridSpacing}>
+      
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
           <Grid item lg={4} md={6} sm={6} xs={12}>
@@ -39,6 +41,7 @@ const Dashboard = () => {
               </Grid>
               <Grid item sm={6} xs={12} md={6} lg={12}>
                 {/* <TotalIncomeLightCard isLoading={isLoading} /> */}
+               
               </Grid>
             </Grid>
           </Grid>
@@ -48,6 +51,7 @@ const Dashboard = () => {
         <Grid container spacing={gridSpacing}>
           <Grid item xs={12} md={8}>
             <TotalGrowthBarChart isLoading={isLoading} />
+            <TableauEmbed />
           </Grid>
           <Grid item xs={12} md={4}>
             <SymptomForm />
