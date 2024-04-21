@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
 from io import StringIO
+import pickle
 from database import connect, add_csv_data
 
 
@@ -35,12 +36,19 @@ def login(user: User):
 @app.post("/symptoms")
 def receive_medical_data(data: Symptoms):
     # Process the medical data here
-    collection = db["userMedicalData"]
-    collection.insert_one(data.dict())
+    collection = db.userMedicalData
+    # collection.insert_one(data.dict())
     
+    results = predict_symptoms(data)
     # validated data
-    return {"status": "Data received"}
+    return {"status": "Data received",
+            "results": results}
 
+def predict_symptoms(data: Symptoms):
+    model = pickle.load(open('model.pkl', 'rb'))
+    symptoms = model.predict(data)
+
+    return symptoms
 
 '''
 input: csv file
