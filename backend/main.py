@@ -213,3 +213,13 @@ async def receive_medical_worker_data(file: UploadFile = File(...)):
         return {"status": "Data received"}
     else:
         raise HTTPException(status_code=400, detail="Invalid file type")
+
+def register_exception(app: FastAPI):
+    @app.exception_handler(RequestValidationError)
+    async def validation_exception_handler(request: Request, exc: RequestValidationError):
+
+        exc_str = f'{exc}'.replace('\n', ' ').replace('   ', ' ')
+        # or logger.error(f'{exc}')
+        logger.error(request, exc_str)
+        content = {'status_code': 10422, 'message': exc_str, 'data': None}
+        return JSONResponse(content=content, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
