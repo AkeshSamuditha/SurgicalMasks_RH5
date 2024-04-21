@@ -185,7 +185,8 @@ def receive_medical_data(data):
     return {"status": "Data received",
             "results": results}
 
-def predict_symptoms(data: Symptoms):
+def predict_symptoms(data):
+    return data
     dataModel = data.model_dump()
     for key in dataModel:
         dataModel[key] = int(dataModel[key])
