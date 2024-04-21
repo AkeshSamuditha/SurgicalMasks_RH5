@@ -12,13 +12,19 @@ class User(BaseModel):
     password: str
     
 class Symptoms(BaseModel):
-    bmi: float
+    rash: bool
+    fever: bool
+    cough: bool
+    sore_throat: bool
+    shortness_of_breath: bool
+    head_ache: bool
+    age: int
     
 
 @app.on_event("startup")
 async def startup_event():
-    global client
-    client = connect()
+    global db
+    db = connect()
 
 @app.post("/login")
 def login(user: User):
@@ -26,21 +32,27 @@ def login(user: User):
         raise HTTPException(status_code=400, detail="Invalid credentials")
     return {"status": "Logged in"}
 
-@app.post("/user_data")
-def receive_medical_data(data: MedicalData):
+@app.post("/symptoms")
+def receive_medical_data(data: Symptoms):
     # Process the medical data here
-    collection = client["prognostic"]["userMedicalData"]
+    collection = db["userMedicalData"]
     collection.insert_one(data.dict())
+    
+    # validated data
     return {"status": "Data received"}
 
 
+'''
+input: csv file
+output: status message
+description: This endpoint is used to receive the medical worker data in the form of a CSV file. The data is then inserted into the MongoDB database.
+'''
 @app.post("/medical_worker_data")
 async def receive_medical_worker_data(file: UploadFile = File(...)):
     if file.filename.endswith('.csv'):
         contents = await file.read()
         df = pd.read_csv(StringIO(contents.decode('utf-8')))
-        
-        add_csv_data(df, client)
+        add_csv_data(df, db)
         return {"status": "Data received"}
     else:
         raise HTTPException(status_code=400, detail="Invalid file type")
