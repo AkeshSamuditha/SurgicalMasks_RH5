@@ -21,8 +21,8 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
-)
+    allow_headers=["*"],)
+
 class User(BaseModel):
     username: str
     password: str
@@ -168,15 +168,6 @@ async def startup_event():
     SymptomModel = pickle.load(open('model.pkl', 'rb'))
     db = connect()
 
-
-    app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 @app.post("/login")
 def login(user: User):
     if user.username != "test" or user.password != "test":
@@ -189,8 +180,6 @@ def check():
 
 @app.post("/symptoms")
 def receive_medical_data(data: Symptoms): 
-    return {"status": "Data received",
-            "results": "heart condition"}
     results = predict_symptoms(data)
     return {"status": "Data received",
             "results": results}
