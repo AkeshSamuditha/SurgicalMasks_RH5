@@ -19,7 +19,7 @@ import {
 
 // assets
 // import { IconBrandTelegram,IconMailbox, IconPhoto } from '@tabler/icons-react';
-import User1 from '/Users/vihidun/MyFolder/Development/SurgicalMasks_RH5/frontend/create-react-app/src/assets/images/users/images.jpeg';
+import User1 from '../../../../assets/images/users/images.jpeg';
 
 // styles
 const ListItemWrapper = styled('div')(({ theme }) => ({
