@@ -11,6 +11,7 @@ import { Grid } from '@mui/material';
 // import TotalIncomeLightCard from './TotalIncomeLightCard';
 import TotalGrowthBarChart from './TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
+import SymptomForm from './SymptomForm';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
@@ -49,7 +50,7 @@ const Dashboard = () => {
             <TotalGrowthBarChart isLoading={isLoading} />
           </Grid>
           <Grid item xs={12} md={4}>
-            {/* <PopularCard isLoading={isLoading} /> */}
+            <SymptomForm />
           </Grid>
         </Grid>
       </Grid>
