@@ -168,6 +168,15 @@ async def startup_event():
     SymptomModel = pickle.load(open('model.pkl', 'rb'))
     db = connect()
 
+
+    app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.post("/login")
 def login(user: User):
     if user.username != "test" or user.password != "test":
@@ -186,7 +195,7 @@ def receive_medical_data(data: Symptoms):
     return {"status": "Data received",
             "results": results}
 
-def predict_symptoms(data):
+def predict_symptoms(data: Symptoms):
     return data
     dataModel = data.model_dump()
     for key in dataModel:
