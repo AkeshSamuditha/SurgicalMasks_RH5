@@ -143,7 +143,7 @@ const SymptomForm = () => {
     event.preventDefault();
     try {
       console.log('Symptoms:', symptoms);
-      const response = await fetch('https:/rude-wren-surgicalmasks.koyeb.app/symptoms', {
+      const response = await fetch('https://rude-wren-surgicalmasks.koyeb.app/symptoms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
