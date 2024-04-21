@@ -143,12 +143,13 @@ const SymptomForm = () => {
     try {
       console.log('Symptoms:', symptoms);
       const response = await fetch('https://rude-wren-surgicalmasks.koyeb.app/symptoms', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ symptoms })
-      });
+  method: 'POST',
+  mode: 'no-cors', // Set mode to 'no-cors' to disable CORS
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ symptoms })
+});
       if (response.ok) {
         const data = await response.json();
         console.log('Success:', data);
