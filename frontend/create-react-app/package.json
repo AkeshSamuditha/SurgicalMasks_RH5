@@ -1,8 +1,7 @@
 {
-  "name": "berry-free-material-react-cra",
+  "name": "prognostic",
   "version": "3.4.2",
   "private": true,
-  "homepage": "https://berrydashboard.io/free",
   "dependencies": {
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.3",
@@ -16,6 +15,7 @@
     "apexcharts": "^3.45.2",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.3",
+    "gh-pages": "^6.1.1",
     "material-ui-popup-state": "^5.0.10",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
