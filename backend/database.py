@@ -1,4 +1,5 @@
 from pymongo.mongo_client import MongoClient
+import pandas as pd
 
 def connect():
     uri = "mongodb+srv://surgicalmasks:6ey0eKacdG2MdmvB@cluster0.uovckvw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
@@ -10,11 +11,8 @@ def connect():
         return client
     except Exception as e:
         print(e)
-    
-    
-import pandas as pd
 
-def intializeData():
+def intializeData(client):
     # convert csv to json format
     data = pd.read_csv("health_dataset2.csv")
 
