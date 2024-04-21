@@ -9,12 +9,17 @@ from database import connect, add_csv_data
 
 app = FastAPI()
 
+origins = [
+    "https://surgical-masks-rh-5.vercel.app",  # Add your origins here
+    "http://localhost:3001",  # Or your local development origin
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 class User(BaseModel):
     username: str
