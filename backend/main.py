@@ -12,6 +12,8 @@ app = FastAPI()
 origins = [
     "https://surgical-masks-rh-5.vercel.app",  # Add your origins here
     "http://localhost:3001",  # Or your local development origin
+
+"https://surgical-masks-rh-5.vercel.app/"
 ]
 
 app.add_middleware(
