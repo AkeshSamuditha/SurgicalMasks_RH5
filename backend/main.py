@@ -1,5 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, File, UploadFile
 from pydantic import BaseModel
+from typing import Union
+
 import pandas as pd
 from io import StringIO
 import pickle
