@@ -121,7 +121,6 @@ const SymptomForm = () => {
     stomach_bleeding: false,
     distention_of_abdomen: false,
     history_of_alcohol_consumption: false,
-    fluid_overload1: false,
     blood_in_sputum: false,
     prominent_veins_on_calf: false,
     palpitations: false,
@@ -168,9 +167,9 @@ const SymptomForm = () => {
       <form onSubmit={handleSubmit}>
         <div style={{ maxHeight: '600px', overflowY: 'auto' }}>
           {' '}
-          {Object.keys(symptoms).map((key) => (
+          {Object.keys(symptoms).map((key, index) => (
             <FormControlLabel
-              key={key}
+              key={`${key}-${index}`} // Concatenate the key with index
               control={<Checkbox checked={symptoms[key]} onChange={handleChange} name={key} />}
               label={key.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
             />

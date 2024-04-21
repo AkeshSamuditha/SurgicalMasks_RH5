@@ -3,3 +3,28 @@
 2024-04-21 08:05:20,640 - DEBUG - Data processed successfully
 2024-04-21 08:05:21,129 - INFO - Accuracy: 0.9761904761904762
 2024-04-21 08:05:21,130 - DEBUG - Model saved successfully
+2024-04-21 12:44:39,522 - DEBUG - Training data loaded successfully with 4920 rows and 133 columns.
+2024-04-21 12:44:39,522 - DEBUG - Testing data loaded successfully with 42 rows and 133 columns.
+2024-04-21 12:44:39,530 - DEBUG - Data processed successfully
+2024-04-21 12:44:40,396 - INFO - Accuracy: 0.9761904761904762
+2024-04-21 12:44:40,400 - DEBUG - Model saved successfully
+2024-04-21 12:52:43,638 - DEBUG - Training data loaded successfully with 4920 rows and 133 columns.
+2024-04-21 12:52:43,638 - DEBUG - Testing data loaded successfully with 42 rows and 133 columns.
+2024-04-21 12:52:43,641 - DEBUG - Data processed successfully
+2024-04-21 12:52:44,335 - INFO - Accuracy: 0.9761904761904762
+2024-04-21 12:52:44,337 - DEBUG - Model saved successfully
+2024-04-21 13:02:41,960 - DEBUG - Training data loaded successfully with 4920 rows and 133 columns.
+2024-04-21 13:02:41,961 - DEBUG - Testing data loaded successfully with 42 rows and 133 columns.
+2024-04-21 13:02:41,963 - DEBUG - Data processed successfully
+2024-04-21 13:02:42,667 - INFO - Accuracy: 0.9761904761904762
+2024-04-21 13:02:42,669 - DEBUG - Model saved successfully
+2024-04-21 13:03:47,489 - DEBUG - Training data loaded successfully with 4920 rows and 132 columns.
+2024-04-21 13:03:47,490 - DEBUG - Testing data loaded successfully with 42 rows and 132 columns.
+2024-04-21 13:03:47,493 - DEBUG - Data processed successfully
+2024-04-21 13:03:48,184 - INFO - Accuracy: 0.9761904761904762
+2024-04-21 13:03:48,186 - DEBUG - Model saved successfully
+2024-04-21 13:05:32,437 - DEBUG - Training data loaded successfully with 4920 rows and 132 columns.
+2024-04-21 13:05:32,438 - DEBUG - Testing data loaded successfully with 42 rows and 132 columns.
+2024-04-21 13:05:32,439 - DEBUG - Data processed successfully
+2024-04-21 13:05:33,100 - INFO - Accuracy: 0.9761904761904762
+2024-04-21 13:05:33,102 - DEBUG - Model saved successfully

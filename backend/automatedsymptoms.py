@@ -18,6 +18,8 @@ def load_data():
     try:
         train_df = pd.read_csv('Training.csv')
         test_df = pd.read_csv('Testing.csv')
+        # train_df.columns = range(132)
+        # test_df.columns = range(132)
         logging.debug(f"Training data loaded successfully with {train_df.shape[0]} rows and {train_df.shape[1]} columns.")
         logging.debug(f"Testing data loaded successfully with {test_df.shape[0]} rows and {test_df.shape[1]} columns.")
         return train_df, test_df
