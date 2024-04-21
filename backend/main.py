@@ -9,6 +9,13 @@ from database import connect, add_csv_data
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 class User(BaseModel):
     username: str
     password: str
@@ -296,6 +303,10 @@ def login(user: User):
     if user.username != "test" or user.password != "test":
         raise HTTPException(status_code=400, detail="Invalid credentials")
     return {"status": "Logged in"}
+
+@app.post("/check")
+def check():
+    return {"status": "Working"}
 
 @app.post("/symptoms")
 def receive_medical_data(data: Symptoms):
