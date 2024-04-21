@@ -37,7 +37,7 @@ def login(user: User):
 def receive_medical_data(data: Symptoms):
     # Process the medical data here
     collection = db.userMedicalData
-    # collection.insert_one(data.dict())
+    collection.insert_one(data.dict())
     
     results = predict_symptoms(data)
     # validated data
@@ -46,9 +46,9 @@ def receive_medical_data(data: Symptoms):
 
 def predict_symptoms(data: Symptoms):
     model = pickle.load(open('model.pkl', 'rb'))
-    symptoms = model.predict(data)
+    disease = model.predict(data)
 
-    return symptoms
+    return disease
 
 '''
 input: csv file
