@@ -179,7 +179,7 @@ def check():
     return {"status": "Working"}
 
 @app.post("/symptoms")
-def receive_medical_data(): 
+def receive_medical_data(data: Symptoms): 
     return {"status": "Data received",
             "results": "heart condition"}
     results = predict_symptoms(data)
