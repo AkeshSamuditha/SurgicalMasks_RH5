@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Checkbox, FormControlLabel } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import MainCard from 'ui-component/cards/MainCard'; // Adjust the import path based on your project structure
 
 const SymptomForm = () => {
@@ -138,6 +139,8 @@ const SymptomForm = () => {
     prognosis: false
   });
 
+  const [disease, setDisease] = useState('');
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -148,11 +151,11 @@ const SymptomForm = () => {
           'Content-Type': 'application/json',
           accept: 'application/json'
         },
-        body: JSON.stringify(symptoms)
+        body: JSON.stringify(symptoms) // changed from ({symptoms}) to symptoms
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('Success:', data);
+        setDisease(data.results);
       } else {
         console.log('Error:', response);
       }
@@ -165,24 +168,47 @@ const SymptomForm = () => {
     setSymptoms({ ...symptoms, [event.target.name]: event.target.checked });
   };
 
+  const handleRecheck = () => {
+    setDisease(null);
+    setSymptoms(
+      Object.keys(symptoms).reduce((acc, key) => {
+        acc[key] = false;
+        return acc;
+      }, {})
+    );
+  };
   return (
     <MainCard title="What are your symptoms?">
-      <form onSubmit={handleSubmit}>
-        <div style={{ maxHeight: '600px', overflowY: 'auto' }}>
-          {' '}
-          {Object.keys(symptoms).map((key, index) => (
-            <FormControlLabel
-              key={`${key}-${index}`} // Concatenate the key with index
-              control={<Checkbox checked={symptoms[key]} onChange={handleChange} name={key} />}
-              label={key.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
-            />
-          ))}
-        </div>
-        <br />
-        <Button type="submit" variant="contained" color="primary">
-          Check Symptoms
-        </Button>
-      </form>
+      {disease ? (
+        <Box display="flex" alignItems="center" justifyContent="space-between">
+          <Typography variant="h5" component="div">
+            Disease Detected :
+          </Typography>
+          <Typography variant="h4" component="div">
+            {disease}
+          </Typography>
+          <Button variant="contained" color="secondary" onClick={handleRecheck}>
+            Recheck Symptoms
+          </Button>
+        </Box>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div style={{ maxHeight: '600px', overflowY: 'auto' }}>
+            {' '}
+            {Object.keys(symptoms).map((key, index) => (
+              <FormControlLabel
+                key={`${key}-${index}`} // Concatenate the key with index
+                control={<Checkbox checked={symptoms[key]} onChange={handleChange} name={key} />}
+                label={key.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
+              />
+            ))}
+          </div>
+          <br />
+          <Button type="submit" variant="contained" color="primary">
+            Check Symptoms
+          </Button>
+        </form>
+      )}
     </MainCard>
   );
 };
