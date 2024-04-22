@@ -142,14 +142,13 @@ const SymptomForm = () => {
     event.preventDefault();
     try {
       console.log('Symptoms:', symptoms);
-      const response = await fetch('http://127.0.0.1:8000/symptoms', {
+      const response = await fetch('https://rude-wren-surgicalmasks.koyeb.app/symptoms', {
         method: 'POST',
+        mode: 'no-cors', // Set mode to 'no-cors' to disable CORS
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          'access-control-allow-origin': '*'
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(symptoms)
+        body: JSON.stringify({ symptoms })
       });
       if (response.ok) {
         const data = await response.json();
