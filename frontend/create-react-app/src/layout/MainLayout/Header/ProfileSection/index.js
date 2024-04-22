@@ -39,8 +39,7 @@ import User1 from 'assets/images/users/user-round.svg';
 // assets
 // import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons-react';
 // import { IconSearch, IconSettings, IconUser } from '@tabler/icons-react';
-import { IconSearch, IconSettings} from '@tabler/icons-react';
-
+import { IconSearch, IconSettings } from '@tabler/icons-react';
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -60,7 +59,6 @@ const ProfileSection = () => {
    * */
   const anchorRef = useRef(null);
   // const handleLogout = async () => {
-  //   console.log('Logout');
   // };
 
   const handleClose = (event) => {
@@ -69,15 +67,6 @@ const ProfileSection = () => {
     }
     setOpen(false);
   };
-
-  // const handleListItemClick = (event, index, route = '') => {
-  //   setSelectedIndex(index);
-  //   handleClose(event);
-
-  //   if (route && route !== '') {
-  //     navigate(route);
-  //   }
-  // };
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };

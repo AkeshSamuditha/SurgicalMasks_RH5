@@ -143,9 +143,14 @@ const SymptomForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const trueCount = Object.values(symptoms).filter((value) => value).length;
+    if (trueCount < 8) {
+      setDisease('Please select at least 8 symptoms for a more accurate diagnosis.');
+      return;
+    }
     try {
-      console.log('Symptoms:', JSON.stringify(symptoms));
-      const response = await fetch('https://rude-wren-surgicalmasks.koyeb.app/symptoms', {
+      // const response = await fetch('https://rude-wren-surgicalmasks.koyeb.app/symptoms',
+      const response = await fetch('http://localhost:8000/symptoms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -156,8 +161,6 @@ const SymptomForm = () => {
       if (response.ok) {
         const data = await response.json();
         setDisease(data.results);
-      } else {
-        console.log('Error:', response);
       }
     } catch (error) {
       console.log('Error:', error);
@@ -180,14 +183,18 @@ const SymptomForm = () => {
   return (
     <MainCard title="What are your symptoms?">
       {disease ? (
-        <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Typography variant="h5" component="div">
-            Disease Detected :
-          </Typography>
-          <Typography variant="h4" component="div">
-            {disease}
-          </Typography>
-          <Button variant="contained" color="secondary" onClick={handleRecheck}>
+        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="space-between">
+          <Box mb={3}>
+            <Typography variant="h5" component="div">
+              Disease Detected :
+            </Typography>
+          </Box>
+          <Box mb={3}>
+            <Typography variant="h4" component="div">
+              {disease}
+            </Typography>
+          </Box>
+          <Button variant="contained" color="secondary" onClick={handleRecheck} size="small">
             Recheck Symptoms
           </Button>
         </Box>

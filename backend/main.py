@@ -4,20 +4,17 @@ from pydantic import BaseModel
 import pandas as pd
 from io import StringIO
 import pickle
-import random
 from database import connect, add_csv_data
 
 app = FastAPI()
 
 origins = [
     "https://surgical-masks-rh-5.vercel.app",  # Add your origins here
-    "http://localhost:3001",  # Or your local development origin
-    "https://surgical-masks-rh-5.vercel.app/"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],)
@@ -164,7 +161,7 @@ class Symptoms(BaseModel):
 async def startup_event():
     global db
     global SymptomModel
-    SymptomModel = pickle.load(open('model.pkl', 'rb'))
+    SymptomModel = pickle.load(open('models/model.pkl', 'rb'))
     db = connect()
 
 @app.post("/login")
