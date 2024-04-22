@@ -149,8 +149,7 @@ const SymptomForm = () => {
       return;
     }
     try {
-      // const response = await fetch('https://rude-wren-surgicalmasks.koyeb.app/symptoms',
-      const response = await fetch('http://localhost:8000/symptoms', {
+      const response = await fetch('https://rude-wren-surgicalmasks.koyeb.app/symptoms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
