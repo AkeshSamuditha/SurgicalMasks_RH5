@@ -148,7 +148,7 @@ const SymptomForm = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ symptoms })
+        body: JSON.stringify(symptoms)
       });
       if (response.ok) {
         const data = await response.json();
